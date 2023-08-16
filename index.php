@@ -2,14 +2,15 @@
   session_start();
 
   require 'database.php';
-
+  /*se verifica si el usuario esta logueado*/
   if (isset($_SESSION['user_id'])) {
+    /*se obtiene el id del usuario*/
     $records = $conn->prepare('SELECT id, email, password FROM users WHERE id = :id');
-    $records->bindParam(':id', $_SESSION['user_id']);
+    $records->bindParam(':id', $_SESSION['user_id']); 
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
-
-    $user = null;
+    
+    $user = null; 
 
     if (count($results) > 0) {
       $user = $results;

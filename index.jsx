@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class MiComponente extends Component {
+class MiComponente extends Component { //
   constructor(props) {
     super(props);
     this.state = {

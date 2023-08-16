@@ -1,20 +1,20 @@
 <?php
-
-  session_start();
-
+  
+  session_start();/*inicializa la sesion*/
+  /*se verifica si el usuario esta logueado*/
   if (isset($_SESSION['user_id'])) {
     header('Location: /php-login-simple/index.php');
   }
-  require 'database.php';
-
+  require 'database.php';/*se requiere la conexion a la base de datos*/
+  
   if (!empty($_POST['email']) && !empty($_POST['password'])) {
     $records = $conn->prepare('SELECT id, email, password FROM users WHERE email = :email');
     $records->bindParam(':email', $_POST['email']);
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
-
+    /*se verifica si el usuario se logueo correctamente*/
     $message = '';
-
+    
     if (count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
       $_SESSION['user_id'] = $results['id'];
       header("Location: /php-login-simple/index.php");

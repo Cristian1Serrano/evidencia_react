@@ -1,3 +1,4 @@
+// se crea la funcion para cargar el contenido de publicaciones
 function loadPublicaciones() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -9,6 +10,7 @@ function loadPublicaciones() {
     xhr.send();
   }
 
+  // se crea la funcion para cargar el contenido de perfil
   function loadPerfil() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
